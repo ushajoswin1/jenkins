@@ -1,0 +1,25 @@
+pipeline {
+agent any
+ 
+ stages {
+ stage ( 'compile stage') {
+ steps {
+ with maven (maven : 'apache-maven-3.6.3') {
+ sh 'maven clean compile' 
+ }
+ }
+ }
+ stage ('testing stage') {
+ steps {
+ with maven (maven : 'apache-maven-3.6.3') {
+ sh 'maven test compile' 
+ }
+ }
+ }
+ stage ('deployment stage') {
+ steps {
+ with maven (maven : 'apache-maven-3.6.3') {
+ sh 'deployment compile' 
+ }
+ }
+ }
